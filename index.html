@@ -1,121 +1,174 @@
 <html>
-
 <head>
-    <title>Cart Page</title>
+    <title>Shop Blocks</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-        font-family: Arial, Helvetica, sans-serif;
+<script>
+    window.onload = function () {
+        var quantitySpans = document.getElementsByClassName("quantity-container");
+        for (var i = 1; i <= quantitySpans.length; i++) {
+            document.getElementById("quantity-atc-" + i).style.display = "block";
+            document.getElementById("quantity-controls-" + i).style.display = "none";
+        }
     }
 
-    ul {
-        list-style-type: none;
+    function increaseQuantity(productId) {
+        var quantitySpan = document.getElementById("quantity" + productId);
+        var quantity = parseInt(quantitySpan.innerText);
+        quantity++;
+        quantitySpan.innerText = quantity;
+        document.getElementById("quantity-atc-" + productId).style.display = "none";
+        document.getElementById("quantity-controls-" + productId).style.display = "flex";
     }
 
-    li {
-        display: inline;
+    function decreaseQuantity(productId) {
+        var quantitySpan = document.getElementById("quantity" + productId);
+        var quantity = parseInt(quantitySpan.innerText);
+        if (quantity > 0) {
+            quantity--;
+        }
+        quantitySpan.innerText = quantity;
+        if (quantity == 0) {
+            document.getElementById("quantity-atc-" + productId).style.display = "block";
+            document.getElementById("quantity-controls-" + productId).style.display = "none";
+        }
     }
-
-    a {
-        padding: 8px 18px;
-        text-decoration: none;
-        color: white;
-    }
-
-    .header {
-        background-color: blueviolet;
-        color: white;
-        padding: 20px 40px;
-        font-size: medium;
-        font-weight: bold;
-    }
-
-    .store {
-        margin: auto;
-        width: 80%;
-        justify-content: space-between;
-        /* background-color: blue; */
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .card {
-        max-width: 300px;
-        margin: 30px;
-        text-align: center;
-        font-family: arial;
-    }
-
-    .card img {
-        height: 300px;
-    }
-
-    .price {
-        color: grey;
-        font-size: 22px;
-    }
-
-    .card button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: blueviolet;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-    }
-
-    .space {
-        height: 20px;
-    }
-</style>
+</script>
 
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <ul>
             <li>Cart Page</li>
-            <li style="float:right"><a href="https://capstont-bucket4243.s3.amazonaws.com/feedback.html">Feedback</a></li>
-            <li style="float:right"><a href="https://capstont-bucket4243.s3.amazonaws.com/contact.html">Contact</a></li>
+            <li style="float:right">
+                <a href="https://capstone-bucket4243.s3.amazonaws.com/feedback.html">Feedback</a>
+            </li>
+            <li style="float:right">
+                <a href="https://capstone-bucket4243.s3.amazonaws.com/contact.html">Contact</a>
+            </li>
         </ul>
-    </div>
+    </div> -->
+    <header class="text-gray-600 body-font bg-gray-100">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Shop Blocks</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="https://capstone-bucket4243.s3.amazonaws.com/feedback.html">Feedback</a>
+                <a class="mr-5 hover:text-gray-900" href="https://capstone-bucket4243.s3.amazonaws.com/about.html">About us</a>
+            </nav>
+        </div>
+    </header>
+
+
     <div class="store">
         <div class="card">
-            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod1.png">
-            <h1>Play Station 3</h1>
+            <!-- <img src="https://capstone-bucket4243.s3.amazonaws.com/prod1.png"> -->
+            <img src="https://dummyimage.com/200x200">
+            <h3>Play Station 3</h3>
             <p class="price">$600</p>
-            <div class="space"></div>
-            <p><button>Add to Cart</button></p>
+            <button id="quantity-atc-1" onclick="increaseQuantity(1)">Add to Cart</button>
+            <div class="quantity-container" id="quantity-controls-1">
+                <button class="red-btn" onclick="decreaseQuantity(1)">-</button>
+                <span class="quantity-text" id="quantity1">0</span>
+                <button onclick="increaseQuantity(1)">+</button>
+            </div>
         </div>
 
         <div class="card">
-            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod2.jpg">
-            <h1>PS-4 Console</h1>
+            <!-- <img src="https://capstone-bucket4243.s3.amazonaws.com/prod2.jpg"> -->
+            <img src="https://dummyimage.com/200x200">
+            <h3>PS-4 Console</h3>
             <p class="price">$100</p>
-            <div class="space"></div>
-            <p><button>Add to Cart</button></p>
+            <button id="quantity-atc-2" onclick="increaseQuantity(2)">Add to Cart</button>
+            <div class="quantity-container" id="quantity-controls-2">
+                <button class="red-btn" onclick="decreaseQuantity(2)">-</button>
+                <span class="quantity-text" id="quantity2">0</span>
+                <button onclick="increaseQuantity(2)">+</button>
+            </div>
         </div>
 
         <div class="card">
-            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod3.png">
-            <h1>Play Station 4</h1>
+            <!-- <img src="https://capstone-bucket4243.s3.amazonaws.com/prod3.png"> -->
+            <img src="https://dummyimage.com/200x200">
+            <h3>Play Station 4</h3>
             <p class="price">$800</p>
-            <div class="space"></div>
-            <p><button>Add to Cart</button></p>
+            <button id="quantity-atc-3" onclick="increaseQuantity(3)">Add to Cart</button>
+            <div class="quantity-container" id="quantity-controls-3">
+                <button class="red-btn" onclick="decreaseQuantity(3)">-</button>
+                <span class="quantity-text" id="quantity3">0</span>
+                <button onclick="increaseQuantity(3)">+</button>
+            </div>
         </div>
 
         <div class="card">
-            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod4.jpg">
-            <h1>PS-4 Controller Skin</h1>
+            <!-- <img src="https://capstone-bucket4243.s3.amazonaws.com/prod4.jpg"> -->
+            <img src="https://dummyimage.com/200x200">
+            <h3>PS-4 Controller Skin</h3>
             <p class="price">$10</p>
-            <div class="space"></div>
-            <p><button>Add to Cart</button></p>
+            <button id="quantity-atc-4" onclick="increaseQuantity(4)">Add to Cart</button>
+            <div class="quantity-container" id="quantity-controls-4">
+                <button class="red-btn" onclick="decreaseQuantity(4)">-</button>
+                <span class="quantity-text" id="quantity4">0</span>
+                <button onclick="increaseQuantity(4)">+</button>
+            </div>
         </div>
     </div>
-</body>
 
+    <footer class="text-gray-600 body-font bg-gray-100">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Shop Blocks</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">©
+                2020 LLC—
+                <a class="text-gray-600 ml-1" rel="noopener noreferrer"
+                    target="_blank">@shopblocks</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a class="text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                        </path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none"
+                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                        </path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
+</body>
 </html>
