@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title>Cart Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        display: inline;
+    }
+
+    a {
+        padding: 8px 18px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .header {
+        background-color: blueviolet;
+        color: white;
+        padding: 20px 40px;
+        font-size: medium;
+        font-weight: bold;
+    }
+
+    .store {
+        margin: auto;
+        width: 80%;
+        justify-content: space-between;
+        /* background-color: blue; */
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        max-width: 300px;
+        margin: 30px;
+        text-align: center;
+        font-family: arial;
+    }
+
+    .card img {
+        height: 300px;
+    }
+
+    .price {
+        color: grey;
+        font-size: 22px;
+    }
+
+    .card button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: blueviolet;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .space {
+        height: 20px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <ul>
+            <li>Cart Page</li>
+            <li style="float:right"><a href="https://capstont-bucket4243.s3.amazonaws.com/feedback.html">Feedback</a></li>
+            <li style="float:right"><a href="https://capstont-bucket4243.s3.amazonaws.com/contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <div class="store">
+        <div class="card">
+            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod1.png">
+            <h1>Play Station 3</h1>
+            <p class="price">$600</p>
+            <div class="space"></div>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod2.jpg">
+            <h1>PS-4 Console</h1>
+            <p class="price">$100</p>
+            <div class="space"></div>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod3.png">
+            <h1>Play Station 4</h1>
+            <p class="price">$800</p>
+            <div class="space"></div>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="https://capstont-bucket4243.s3.amazonaws.com/prod4.jpg">
+            <h1>PS-4 Controller Skin</h1>
+            <p class="price">$10</p>
+            <div class="space"></div>
+            <p><button>Add to Cart</button></p>
+        </div>
+    </div>
+</body>
+
+</html>
